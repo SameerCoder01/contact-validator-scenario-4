@@ -42,3 +42,18 @@ def test_mask_email_basic():
 
     # Assert
     assert result == "pr***@example.com"
+
+
+def test_is_valid_phone_digits_only_true():
+    """Test a valid 10-digit phone number without dashes."""
+    assert is_valid_phone("5551234567") is True
+
+
+def test_mask_email_short_local_part():
+    """Test masking a valid email with a short local part."""
+    assert mask_email("ab@example.com") == "a*@example.com"
+
+
+def test_normalize_phone_valid():
+    """Test normalizing a valid phone number into digits-only form."""
+    assert normalize_phone("555-123-4567") == "5551234567"
